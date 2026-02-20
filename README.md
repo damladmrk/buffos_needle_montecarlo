@@ -28,6 +28,10 @@ pip install matplotlib
 
 ## Execution
 
--> After installing the requirements and navigating to the project directory, the program can be executed with: **python main.py** the program can be run, for both experimental approach, also for complete of the the graph tabs should be closed.
+-> After installing the requirements and navigating to the project directory, the program can be executed with: 
+```bash
+**python main.py** 
+```
+the program can be run, for both experimental approach, also for complete of the the graph tabs should be closed.
 -> Detailed results of the experiments can be observed either in the terminal output or in the project report.
 
