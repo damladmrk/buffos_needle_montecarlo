@@ -6,6 +6,17 @@ import matplotlib.pyplot as plt
 random.seed(21)
 
 def buffons_needle(L, D, R):
+    """
+    Simulates a single needle drop over consecetive circles.
+
+    Params:
+    L : needle length
+    D : spacing between circles 
+    R : radius of sampling disk (finite approximation)
+
+    Returns:
+    True if the needle crosses any circle boundary.
+    """
     u = random.random()
     # Since creating a random point in the radial direction uniformly is hard to achive,
     # I scaled the initial variable according to my space
@@ -33,6 +44,18 @@ def buffons_needle(L, D, R):
 
 
 def monte_carlo_probability(n, L, D, R):
+    """
+    Estimates crossing probability for circles case.
+
+    Params:
+    n : number of simulations
+    L : needle length
+    D : circle spacing
+    R : sampling disk radius
+
+    Returns:
+    Estimated probability of crossing.
+    """
     crossed = 0
     for _ in range(n):
         if buffons_needle(L, D, R):
@@ -41,10 +64,18 @@ def monte_carlo_probability(n, L, D, R):
 
 
 def p_theory(L, D):
+    """
+    Theoretical probability:
+        P = 2L / (Pi*D)
+    """
     return (2.0 * L) / (math.pi * D)
 
 
 def pi_from_p(P, L, D):
+    """
+    Computes Pi from estimated probability:
+        Pi = 2L / (P * D)
+    """
     return (2.0 * L) / (P * D)
 
 def run_experiments():

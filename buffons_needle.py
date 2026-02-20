@@ -6,6 +6,17 @@ import matplotlib.pyplot as plt
 random.seed(21)
 
 def buffons_needle(iter, l, d):
+    """
+    Simulates Buffon's Needle experiment for parallel lines.
+
+    Params:
+    iter : number of needle drops
+    l    : needle length (L < D)
+    d    : distance between parallel lines
+
+    Returns:
+    Estimated crossing probability P.
+    """
     crossed = 0
     for _ in range(iter):
         angle = random.uniform(0, math.pi/2)
@@ -16,6 +27,12 @@ def buffons_needle(iter, l, d):
     return crossed/iter
 
 def monte_carlo_pi(iter, l, d):
+    """
+    Estimates π using the Buffon's Needle probability formula:
+        Pi ≈ 2L / (D * P)
+    Returns:
+    Estimated Pi value.
+    """
     probability = buffons_needle(iter, l, d)
 
     if probability == 0:
@@ -70,7 +87,7 @@ def run_experiment():
     plt.grid(True, which="both")
     plt.show()
 
-    # π Convergence Graph
+    # Pi Convergence Graph
     plt.figure()
     plt.plot(iters, pi_hats, marker="o")
     plt.axhline(true_pi, linestyle="--")
